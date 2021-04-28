@@ -4,7 +4,7 @@ import tensorflow as tf
 from tensorflow import keras
 from keras import models
 import streamlit as st
-import cv2
+from cv2 import cv2
 import numpy as np
 from img_class import import_and_predict
 
