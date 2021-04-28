@@ -29,7 +29,7 @@ if file is None:
 else:
     image = Image.open(file)
     st.image(image, use_column_width=True)
-    prediction = import_and_predict(image, '/Users/weezs/Projects/foodclass_webapp/finalmodel/final_model.h5')
+    prediction = import_and_predict(image, './finalmodel/final_model.h5')
     
     if np.argmax(prediction) == 0:
         st.write("It is baklava!")
