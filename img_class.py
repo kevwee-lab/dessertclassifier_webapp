@@ -1,26 +1,18 @@
-import keras
 from PIL import Image, ImageOps
 import numpy as np
 import tensorflow as tf
-from tensorflow import keras
 import streamlit as st
-from keras import backend as K
-import cv2
-import numpy as np
 
-@st.cache(allow_output_mutation=True)
-def import_and_predict(image_data, model):
-        model = tf.keras.models.load_model(model)
-        size = (224,224)    
-        image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
-        image = np.asarray(image)
-        img = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
-        img_resize = (cv2.resize(img, dsize=(224, 224),  interpolation=cv2.INTER_CUBIC))
-        
-        img_reshape = img_resize[np.newaxis,...]
+# Load the model once at app startup
+model = tf.keras.models.load_model('./finalmodel/final_model.h5')
+
+def import_and_predict(image_data):
+    # Resize and preprocess image
+    size = (224, 224)
+    image = ImageOps.fit(image_data, size, Image.ANTIALIAS)
+    img_array = np.array(image) / 255.0  # scale pixels
+    img_array = np.expand_dims(img_array, axis=0)  # add batch dimension
     
-        prediction = model.predict(img_reshape)
-        
-        return prediction
-
-        
+    # Predict
+    prediction = model.predict(img_array)
+    return prediction
