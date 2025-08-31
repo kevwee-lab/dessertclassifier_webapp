@@ -1,8 +1,6 @@
-tensorflow==2.4.1
-streamlit==0.83.0
-numpy==1.19.5
-pillow==8.1.0
-keras==2.4.3
-opencv-python==4.4.0.44
-opencv-contrib-python==4.4.0.44
+tensorflow==2.14.0
+streamlit==1.28.0
+numpy>=1.25
+pillow>=9.5
+opencv-python>=4.8
 
