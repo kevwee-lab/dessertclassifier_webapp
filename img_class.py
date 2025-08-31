@@ -5,7 +5,7 @@ import tensorflow as tf
 from tensorflow import keras
 import streamlit as st
 from keras import backend as K
-from cv2 import cv2
+import cv2
 import numpy as np
 
 @st.cache(allow_output_mutation=True)
